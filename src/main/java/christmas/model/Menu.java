@@ -1,19 +1,17 @@
 package christmas.model;
 
-import java.util.Arrays;
-
 public class Menu {
-    String menu;
+    MenuItem menu;
     int amount;
 
     public Menu(String input) {
         String[] split = input.split("-");
-        this.menu = split[0];
+        this.menu = MenuItem.of(split[0]);
         this.amount = Integer.parseInt(split[1]);
     }
 
     @Override
     public String toString() {
-        return menu + " " + amount + "개";
+        return menu.getMenuName() + " " + amount + "개";
     }
 }
