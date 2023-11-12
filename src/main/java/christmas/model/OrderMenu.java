@@ -17,6 +17,10 @@ public class OrderMenu {
         }
     }
 
+    public List<Menu> getOrder() {
+        return order;
+    }
+
     @Override
     public String toString() {
         String orderMenu = "";

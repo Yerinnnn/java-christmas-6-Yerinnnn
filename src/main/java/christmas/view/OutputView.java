@@ -37,8 +37,9 @@ public class OutputView {
         System.out.println(orderMenu.toString());
     }
 
-    public void printTotalOrderAmount() {
+    public void printTotalOrderAmount(int totalOrderAmount) {
         System.out.println(ORDER_AMOUNT_MESSAGE);
+        System.out.println(String.format("%,d", totalOrderAmount) + "원");
     }
 
     public void printPresentMenu() {

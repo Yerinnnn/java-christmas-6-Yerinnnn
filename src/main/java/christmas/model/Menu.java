@@ -10,6 +10,14 @@ public class Menu {
         this.amount = Integer.parseInt(split[1]);
     }
 
+    public String getMenu() {
+        return menu.getMenuName();
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
     @Override
     public String toString() {
         return menu.getMenuName() + " " + amount + "개";

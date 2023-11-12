@@ -2,6 +2,7 @@ package christmas.controller;
 
 import christmas.model.OrderMenu;
 import christmas.model.VisitDate;
+import christmas.service.Calculator;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 
@@ -12,10 +13,12 @@ public class EventPlannerController {
 
     VisitDate visitDate;
     OrderMenu orderMenu;
+    Calculator calculator;
 
-    public EventPlannerController(OutputView outputView, InputView inputView) {
+    public EventPlannerController(OutputView outputView, InputView inputView, Calculator calculator) {
         this.outputView = outputView;
         this.inputView = inputView;
+        this.calculator = calculator;
     }
 
     public void startEventPlanner() {
@@ -24,6 +27,7 @@ public class EventPlannerController {
         getOrderMenuFromUser();
         outputView.printBenefitMessage(visitDate.toString());
         printOrderMenu();
+        printTotalOrderAmount();
     }
 
     private void startMessage() {
@@ -44,5 +48,10 @@ public class EventPlannerController {
 
     private void printOrderMenu() {
         outputView.printOrderMenu(orderMenu);
+    }
+
+    private void printTotalOrderAmount() {
+        int totalOrderAmount = calculator.totalOrderAmount(orderMenu);
+        outputView.printTotalOrderAmount(totalOrderAmount);
     }
 }
