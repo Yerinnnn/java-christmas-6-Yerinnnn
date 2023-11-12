@@ -65,6 +65,10 @@ public class OutputView {
         System.out.println("평일 할인: -" + String.format("%,d", weekdayDiscount));
     }
 
+    public void printWeekendDiscount(int weekendDiscount) {
+        System.out.println("주말 할인: -" + String.format("%,d", weekendDiscount));
+    }
+
     public void printTotalDiscountAmount() {
         System.out.println(DISCOUNT_AMOUNT_MESSAGE);
     }

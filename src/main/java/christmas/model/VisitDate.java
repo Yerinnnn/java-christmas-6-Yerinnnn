@@ -32,6 +32,11 @@ public class VisitDate {
 
     public boolean isWeekday() {
         DayOfWeek dayOfWeek = visitDate.getDayOfWeek();
-        return dayOfWeek != DayOfWeek.FRIDAY || dayOfWeek != DayOfWeek.SATURDAY;
+        return dayOfWeek != DayOfWeek.FRIDAY && dayOfWeek != DayOfWeek.SATURDAY;
+    }
+
+    public boolean isWeekend() {
+        DayOfWeek dayOfWeek = visitDate.getDayOfWeek();
+        return dayOfWeek == DayOfWeek.FRIDAY || dayOfWeek == DayOfWeek.SATURDAY;
     }
 }

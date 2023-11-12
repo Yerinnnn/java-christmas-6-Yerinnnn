@@ -75,5 +75,9 @@ public class EventPlannerController {
             int weekdayDiscount = calculator.calculateWeekdayDiscount(orderMenu);
             outputView.printWeekdayDiscount(weekdayDiscount);
         }
+        if (visitDate.isWeekend()) {
+            int weekendDiscount = calculator.calculateWeekendDiscount(orderMenu);
+            outputView.printWeekendDiscount(weekendDiscount);
+        }
     }
 }

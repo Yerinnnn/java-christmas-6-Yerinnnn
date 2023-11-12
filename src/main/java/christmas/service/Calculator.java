@@ -10,6 +10,7 @@ public class Calculator {
     private static final int CHRISTMAS_BASIC_DISCOUNT = 1000;
     private static final int CHRISTMAS_ADDITIONAL_DISCOUNT = 100;
     private static final int WEEKDAY_DISCOUNT = 2023;
+    private static final int WEEKEND_DISCOUNT = 2023;
 
     public int totalOrderAmount(OrderMenu orderMenu) {
         int totalPrice = 0;
@@ -27,9 +28,19 @@ public class Calculator {
         int dessertCount = 0;
         for (Menu menu : orderMenu.getOrder()) {
             if (MenuItem.of(menu.getMenu()).getType().equals("dessert")) {
-                dessertCount++;
+                dessertCount += menu.getAmount();
             }
         }
         return dessertCount * WEEKDAY_DISCOUNT;
+    }
+
+    public int calculateWeekendDiscount(OrderMenu orderMenu) {
+        int mainCount = 0;
+        for (Menu menu : orderMenu.getOrder()) {
+            if(MenuItem.of(menu.getMenu()).getType().equals("main")) {
+                mainCount += menu.getAmount();
+            }
+        }
+        return mainCount * WEEKEND_DISCOUNT;
     }
 }
