@@ -1,5 +1,7 @@
 package christmas.view;
 
+import christmas.model.OrderMenu;
+
 public class OutputView {
     private final String START_MESSAGE = "안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.";
     private final String GET_VISIT_DATE_MESSAGE = "12월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)";
@@ -25,12 +27,14 @@ public class OutputView {
         System.out.println(GET_ORDER_MENU_MESSAGE);
     }
 
-    public void printBenefitMessage() {
-        System.out.println(BENEFIT_MESSAGE);
+    public void printBenefitMessage(String visitDate) {
+        System.out.println(visitDate + BENEFIT_MESSAGE);
+        System.out.println();
     }
 
-    public void printOrderMenu() {
+    public void printOrderMenu(OrderMenu orderMenu) {
         System.out.println(ORDER_MENU_MESSAGE);
+        System.out.println(orderMenu.toString());
     }
 
     public void printTotalOrderAmount() {

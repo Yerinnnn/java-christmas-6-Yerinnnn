@@ -16,4 +16,13 @@ public class OrderMenu {
             order.add(menu);
         }
     }
+
+    @Override
+    public String toString() {
+        String orderMenu = "";
+        for (Menu menu : order) {
+            orderMenu += menu.toString() + "\n";
+        }
+        return orderMenu;
+    }
 }

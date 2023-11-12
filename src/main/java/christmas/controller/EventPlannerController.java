@@ -22,6 +22,8 @@ public class EventPlannerController {
         startMessage();
         getVisitDateFromUser();
         getOrderMenuFromUser();
+        outputView.printBenefitMessage(visitDate.toString());
+        printOrderMenu();
     }
 
     private void startMessage() {
@@ -38,5 +40,9 @@ public class EventPlannerController {
         outputView.getOrderMenuMessage();
         String input = inputView.getVisitDate();
         orderMenu = new OrderMenu(input);
+    }
+
+    private void printOrderMenu() {
+        outputView.printOrderMenu(orderMenu);
     }
 }

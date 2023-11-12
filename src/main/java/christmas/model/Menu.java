@@ -11,4 +11,9 @@ public class Menu {
         this.menu = split[0];
         this.amount = Integer.parseInt(split[1]);
     }
+
+    @Override
+    public String toString() {
+        return menu + " " + amount + "개";
+    }
 }
