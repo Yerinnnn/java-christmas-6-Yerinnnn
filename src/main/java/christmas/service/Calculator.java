@@ -45,17 +45,13 @@ public class Calculator {
         return mainCount * WEEKEND_DISCOUNT;
     }
 
-    public int specialDayDiscount() {
-        return SPECIAL_DAY_DISCOUNT;
-    }
-
     public String badgeEvent(int totalDiscountAmount) {
-        if (totalDiscountAmount >= 5000) {
-            return "별";
+        if (totalDiscountAmount >= 20000) {
+            return "산타";
         } else if (totalDiscountAmount >= 10000) {
             return "트리";
-        } else if (totalDiscountAmount >= 20000) {
-            return "산타";
+        } else if (totalDiscountAmount >= 5000) {
+            return "별";
         }
         return "없음";
     }

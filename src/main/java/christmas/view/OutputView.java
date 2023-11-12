@@ -47,7 +47,7 @@ public class OutputView {
         System.out.println(PRESENT_MENU_MESSAGE);
         if (service) {
             System.out.println("샴페인 1개");
-        } else if (!service) {
+        } else if (!(service)) {
             System.out.println("없음");
         }
         System.out.println();

@@ -16,11 +16,8 @@ public class EventPlannerController {
 
     private VisitDate visitDate;
     private OrderMenu orderMenu;
-    private Calculator calculator;
+    private final Calculator calculator;
     private int totalOrderAmount;
-    private int christmasDiscount;
-    private int weekdayDiscount;
-    private int weekendDiscount;
     private int totalDiscountAmount;
 
     public EventPlannerController(OutputView outputView, InputView inputView, Calculator calculator, EventService eventService) {
@@ -76,18 +73,18 @@ public class EventPlannerController {
 
     private void printDiscountResult() {
         if (visitDate.isChristmasDday()) {
-            christmasDiscount = calculator.christmasDdayDiscount(visitDate);
+            int christmasDiscount = calculator.christmasDdayDiscount(visitDate);
             outputView.printChristmasDiscount(christmasDiscount);
             totalDiscountAmount += christmasDiscount;
 
         }
         if (visitDate.isWeekday()) {
-            weekdayDiscount = calculator.weekdayDiscount(orderMenu);
+            int weekdayDiscount = calculator.weekdayDiscount(orderMenu);
             outputView.printWeekdayDiscount(weekdayDiscount);
             totalDiscountAmount += weekdayDiscount;
         }
         if (visitDate.isWeekend()) {
-            weekendDiscount = calculator.weekendDiscount(orderMenu);
+            int weekendDiscount = calculator.weekendDiscount(orderMenu);
             outputView.printWeekendDiscount(weekendDiscount);
             totalDiscountAmount += weekendDiscount;
         }
