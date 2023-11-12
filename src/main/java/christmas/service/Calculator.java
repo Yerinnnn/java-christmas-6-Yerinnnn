@@ -11,6 +11,7 @@ public class Calculator {
     private static final int CHRISTMAS_ADDITIONAL_DISCOUNT = 100;
     private static final int WEEKDAY_DISCOUNT = 2023;
     private static final int WEEKEND_DISCOUNT = 2023;
+    private static final int SPECIAL_DAY_DISCOUNT = 1000;
 
     public int totalOrderAmount(OrderMenu orderMenu) {
         int totalPrice = 0;
@@ -42,5 +43,9 @@ public class Calculator {
             }
         }
         return mainCount * WEEKEND_DISCOUNT;
+    }
+
+    public int calculateSpecialDayDiscount(int totalOrderAmount) {
+        return SPECIAL_DAY_DISCOUNT;
     }
 }

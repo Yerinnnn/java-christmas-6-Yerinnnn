@@ -7,6 +7,7 @@ import java.time.format.DateTimeFormatter;
 public class VisitDate {
     LocalDate visitDate;
     int date;
+    private static final LocalDate CHRISTMAS = LocalDate.of(2032, 12, 25);
 
     public VisitDate(String input) {
         this.date = Integer.parseInt(input);
@@ -38,5 +39,10 @@ public class VisitDate {
     public boolean isWeekend() {
         DayOfWeek dayOfWeek = visitDate.getDayOfWeek();
         return dayOfWeek == DayOfWeek.FRIDAY || dayOfWeek == DayOfWeek.SATURDAY;
+    }
+
+    public boolean isSpecialDay() {
+        DayOfWeek dayOfWeek = visitDate.getDayOfWeek();
+        return dayOfWeek == DayOfWeek.SUNDAY || visitDate.isEqual(CHRISTMAS);
     }
 }
