@@ -21,11 +21,11 @@ public class Calculator {
         return totalPrice;
     }
 
-    public int calculateChristmasDdayDiscount(VisitDate visitDate) {
+    public int christmasDdayDiscount(VisitDate visitDate) {
         return CHRISTMAS_BASIC_DISCOUNT + (visitDate.getDate()-1) * CHRISTMAS_ADDITIONAL_DISCOUNT;
     }
 
-    public int calculateWeekdayDiscount(OrderMenu orderMenu) {
+    public int weekdayDiscount(OrderMenu orderMenu) {
         int dessertCount = 0;
         for (Menu menu : orderMenu.getOrder()) {
             if (MenuItem.of(menu.getMenu()).getType().equals("dessert")) {
@@ -35,7 +35,7 @@ public class Calculator {
         return dessertCount * WEEKDAY_DISCOUNT;
     }
 
-    public int calculateWeekendDiscount(OrderMenu orderMenu) {
+    public int weekendDiscount(OrderMenu orderMenu) {
         int mainCount = 0;
         for (Menu menu : orderMenu.getOrder()) {
             if(MenuItem.of(menu.getMenu()).getType().equals("main")) {
@@ -45,7 +45,18 @@ public class Calculator {
         return mainCount * WEEKEND_DISCOUNT;
     }
 
-    public int calculateSpecialDayDiscount(int totalOrderAmount) {
+    public int specialDayDiscount() {
         return SPECIAL_DAY_DISCOUNT;
+    }
+
+    public String badgeEvent(int totalDiscountAmount) {
+        if (totalDiscountAmount >= 5000) {
+            return "별";
+        } else if (totalDiscountAmount >= 10000) {
+            return "트리";
+        } else if (totalDiscountAmount >= 20000) {
+            return "산타";
+        }
+        return "없음";
     }
 }

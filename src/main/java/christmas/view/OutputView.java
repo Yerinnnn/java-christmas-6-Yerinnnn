@@ -81,14 +81,18 @@ public class OutputView {
         System.out.println();
         System.out.println(DISCOUNT_AMOUNT_MESSAGE);
         System.out.println("-" + String.format("%,d", totalDiscountAmount));
+        System.out.println();
     }
 
-    public void printTotalPaymentAmount() {
+    public void printTotalPaymentAmount(int totalPaymentAmount) {
         System.out.println(PAYMENT_AMOUNT_MESSAGE);
+        System.out.println(String.format("%,d", totalPaymentAmount) + "원");
+        System.out.println();
     }
 
-    public void printBadge() {
+    public void printBadge(String badge) {
         System.out.println(BADGE_MESSAGE);
+        System.out.println(badge);
     }
 
 }
