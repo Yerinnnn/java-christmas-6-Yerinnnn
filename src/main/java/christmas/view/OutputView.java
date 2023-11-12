@@ -50,10 +50,12 @@ public class OutputView {
         } else if (!service) {
             System.out.println("없음");
         }
+        System.out.println();
     }
 
-    public void printDiscountResult() {
+    public void printDiscountResult(int christmasDiscount) {
         System.out.println(DISCOUNT_RESULT_MESSAGE);
+        System.out.println("크리스마스 디데이 할인: -" + String.format("%,d", christmasDiscount));
     }
 
     public void printTotalDiscountAmount() {
