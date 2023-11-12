@@ -53,9 +53,16 @@ public class OutputView {
         System.out.println();
     }
 
-    public void printDiscountResult(int christmasDiscount) {
+    public void printDiscountResultMessage() {
         System.out.println(DISCOUNT_RESULT_MESSAGE);
+    }
+
+    public void printChristmasDiscount(int christmasDiscount) {
         System.out.println("크리스마스 디데이 할인: -" + String.format("%,d", christmasDiscount));
+    }
+
+    public void printWeekdayDiscount(int weekdayDiscount) {
+        System.out.println("평일 할인: -" + String.format("%,d", weekdayDiscount));
     }
 
     public void printTotalDiscountAmount() {

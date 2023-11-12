@@ -1,5 +1,6 @@
 package christmas.model;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -27,5 +28,10 @@ public class VisitDate {
 
     public boolean isChristmasDday() {
         return this.visitDate.isAfter(LocalDate.of(2023, 12, 1)) && this.visitDate.isBefore(LocalDate.of(2023, 12, 26));
+    }
+
+    public boolean isWeekday() {
+        DayOfWeek dayOfWeek = visitDate.getDayOfWeek();
+        return dayOfWeek != DayOfWeek.FRIDAY || dayOfWeek != DayOfWeek.SATURDAY;
     }
 }

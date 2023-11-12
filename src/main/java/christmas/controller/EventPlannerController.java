@@ -33,7 +33,8 @@ public class EventPlannerController {
         printOrderMenu();
         printTotalOrderAmount();
         printPresentMenu();
-        printDiscountList();
+        outputView.printDiscountResultMessage();
+        printDiscountResult();
     }
 
     private void startMessage() {
@@ -48,7 +49,7 @@ public class EventPlannerController {
 
     private void getOrderMenuFromUser() {
         outputView.getOrderMenuMessage();
-        String input = inputView.getVisitDate();
+        String input = inputView.getOrderMenu();
         orderMenu = new OrderMenu(input);
     }
 
@@ -65,10 +66,14 @@ public class EventPlannerController {
         outputView.printPresentMenu(eventService.presentMenu(totalOrderAmount));
     }
 
-    private void printDiscountList() {
+    private void printDiscountResult() {
         if (visitDate.isChristmasDday()) {
             int christmasDiscount = calculator.calculateChristmasDdayDiscount(visitDate);
-            outputView.printDiscountResult(christmasDiscount);
+            outputView.printChristmasDiscount(christmasDiscount);
+        }
+        if (visitDate.isWeekday()) {
+            int weekdayDiscount = calculator.calculateWeekdayDiscount(orderMenu);
+            outputView.printWeekdayDiscount(weekdayDiscount);
         }
     }
 }
