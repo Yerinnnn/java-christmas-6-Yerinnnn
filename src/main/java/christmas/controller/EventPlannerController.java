@@ -10,6 +10,7 @@ public class EventPlannerController {
 
     private final OutputView outputView;
     private final InputView inputView;
+    private int totalOrderAmount;
 
     VisitDate visitDate;
     OrderMenu orderMenu;
@@ -28,6 +29,7 @@ public class EventPlannerController {
         outputView.printBenefitMessage(visitDate.toString());
         printOrderMenu();
         printTotalOrderAmount();
+        printPresentMenu();
     }
 
     private void startMessage() {
@@ -51,7 +53,15 @@ public class EventPlannerController {
     }
 
     private void printTotalOrderAmount() {
-        int totalOrderAmount = calculator.totalOrderAmount(orderMenu);
+        totalOrderAmount = calculator.totalOrderAmount(orderMenu);
         outputView.printTotalOrderAmount(totalOrderAmount);
+    }
+
+    private void printPresentMenu() {
+        if (totalOrderAmount >= 120000) {
+            outputView.printPresentMenu(true);
+        } else if (totalOrderAmount < 120000) {
+            outputView.printPresentMenu(false);
+        }
     }
 }

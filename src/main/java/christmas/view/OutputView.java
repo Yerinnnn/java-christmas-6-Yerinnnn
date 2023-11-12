@@ -40,10 +40,16 @@ public class OutputView {
     public void printTotalOrderAmount(int totalOrderAmount) {
         System.out.println(ORDER_AMOUNT_MESSAGE);
         System.out.println(String.format("%,d", totalOrderAmount) + "원");
+        System.out.println();
     }
 
-    public void printPresentMenu() {
+    public void printPresentMenu(boolean service) {
         System.out.println(PRESENT_MENU_MESSAGE);
+        if (service) {
+            System.out.println("샴페인 1개");
+        } else if (!service) {
+            System.out.println("없음");
+        }
     }
 
     public void printDiscountResult() {
