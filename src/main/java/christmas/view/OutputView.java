@@ -73,6 +73,10 @@ public class OutputView {
         System.out.println("특별 할인: -" + String.format("%,d", specialDiscount));
     }
 
+    public void printPresentlDiscount() {
+        System.out.println("증정 이벤트: -25,000");
+    }
+
     public void printTotalDiscountAmount() {
         System.out.println(DISCOUNT_AMOUNT_MESSAGE);
     }

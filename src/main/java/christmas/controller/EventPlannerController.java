@@ -8,15 +8,22 @@ import christmas.view.InputView;
 import christmas.view.OutputView;
 
 public class EventPlannerController {
-
     private final OutputView outputView;
     private final InputView inputView;
     private final EventService eventService;
-    private int totalOrderAmount;
+    private VisitDate visitDate;
+    private OrderMenu orderMenu;
+    private Calculator calculator;
 
-    VisitDate visitDate;
-    OrderMenu orderMenu;
-    Calculator calculator;
+
+    private int totalOrderAmount;
+    private int christmasDiscount;
+
+
+
+    private int weekdayDiscount;
+    private int weekendDiscount;
+    private int specialDiscount;
 
     public EventPlannerController(OutputView outputView, InputView inputView, Calculator calculator, EventService eventService) {
         this.outputView = outputView;
@@ -68,20 +75,23 @@ public class EventPlannerController {
 
     private void printDiscountResult() {
         if (visitDate.isChristmasDday()) {
-            int christmasDiscount = calculator.calculateChristmasDdayDiscount(visitDate);
+            christmasDiscount = calculator.calculateChristmasDdayDiscount(visitDate);
             outputView.printChristmasDiscount(christmasDiscount);
         }
         if (visitDate.isWeekday()) {
-            int weekdayDiscount = calculator.calculateWeekdayDiscount(orderMenu);
+            weekdayDiscount = calculator.calculateWeekdayDiscount(orderMenu);
             outputView.printWeekdayDiscount(weekdayDiscount);
         }
         if (visitDate.isWeekend()) {
-            int weekendDiscount = calculator.calculateWeekendDiscount(orderMenu);
+            weekendDiscount = calculator.calculateWeekendDiscount(orderMenu);
             outputView.printWeekendDiscount(weekendDiscount);
         }
         if (visitDate.isSpecialDay()) {
-            int specialDiscount = calculator.calculateSpecialDayDiscount(totalOrderAmount);
+            specialDiscount = calculator.calculateSpecialDayDiscount(totalOrderAmount);
             outputView.printSpecialDiscount(specialDiscount);
+        }
+        if (eventService.presentMenu(totalOrderAmount)) {
+            outputView.printPresentlDiscount();
         }
     }
 }
