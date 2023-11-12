@@ -77,8 +77,10 @@ public class OutputView {
         System.out.println("증정 이벤트: -25,000");
     }
 
-    public void printTotalDiscountAmount() {
+    public void printTotalDiscountAmount(int totalDiscountAmount) {
+        System.out.println();
         System.out.println(DISCOUNT_AMOUNT_MESSAGE);
+        System.out.println("-" + String.format("%,d", totalDiscountAmount));
     }
 
     public void printTotalPaymentAmount() {
