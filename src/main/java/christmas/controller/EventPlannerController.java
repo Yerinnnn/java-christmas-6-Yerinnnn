@@ -21,6 +21,7 @@ public class EventPlannerController {
     public void startEventPlanner() {
         startMessage();
         getVisitDateFromUser();
+        getOrderMenuFromUser();
     }
 
     private void startMessage() {
@@ -31,5 +32,11 @@ public class EventPlannerController {
         outputView.getVisitDateMessage();
         String input = inputView.getVisitDate();
         visitDate = new VisitDate(input);
+    }
+
+    private void getOrderMenuFromUser() {
+        outputView.getOrderMenuMessage();
+        String input = inputView.getVisitDate();
+        orderMenu = new OrderMenu(input);
     }
 }
