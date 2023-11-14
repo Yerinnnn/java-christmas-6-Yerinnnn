@@ -22,7 +22,7 @@ public class OrderMenu {
     }
 
     private void validateOrderFormat(String input) {
-        if (!input.matches("([가-힣A-Z]+-\\d+,)*[가-힣A-Z]+-\\d+")) throw new IllegalArgumentException("[ERROR] 형식이 올바르지 않습니다. 다시 입력해 주세요.");
+        if (!input.matches("([가-힣A-Z]+-\\d+,)*[가-힣A-Z]+-\\d+")) throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
     }
 
     private void isSameMenu() {
