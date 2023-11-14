@@ -15,7 +15,7 @@ public class Calculator {
     public int totalOrderAmount(OrderMenu orderMenu) {
         int totalPrice = 0;
         for (Menu menu : orderMenu.getOrder()) {
-            totalPrice += (MenuItem.of(menu.getMenu())).getPrice() * menu.getAmount();
+            totalPrice += (MenuItem.of(menu.getMenuName())).getPrice() * menu.getAmount();
         }
         return totalPrice;
     }
@@ -27,7 +27,7 @@ public class Calculator {
     public int weekdayDiscount(OrderMenu orderMenu) {
         int dessertCount = 0;
         for (Menu menu : orderMenu.getOrder()) {
-            if (MenuItem.of(menu.getMenu()).getType().equals("dessert")) {
+            if (MenuItem.of(menu.getMenuName()).getType().equals("dessert")) {
                 dessertCount += menu.getAmount();
             }
         }
@@ -37,7 +37,7 @@ public class Calculator {
     public int weekendDiscount(OrderMenu orderMenu) {
         int mainCount = 0;
         for (Menu menu : orderMenu.getOrder()) {
-            if(MenuItem.of(menu.getMenu()).getType().equals("main")) {
+            if(MenuItem.of(menu.getMenuName()).getType().equals("main")) {
                 mainCount += menu.getAmount();
             }
         }

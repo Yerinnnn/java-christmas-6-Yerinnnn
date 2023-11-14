@@ -58,9 +58,14 @@ public class EventPlannerController {
     }
 
     private void getOrderMenuFromUser() {
-        outputView.getOrderMenuMessage();
-        String input = inputView.getOrderMenu();
-        orderMenu = new OrderMenu(input);
+        try {
+            outputView.getOrderMenuMessage();
+            String input = inputView.getOrderMenu();
+            orderMenu = new OrderMenu(input);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            getOrderMenuFromUser();
+        }
     }
 
     private void printOrderMenu() {
