@@ -47,9 +47,14 @@ public class EventPlannerController {
     }
 
     private void getVisitDateFromUser() {
-        outputView.getVisitDateMessage();
-        String input = inputView.getVisitDate();
-        visitDate = new VisitDate(input);
+        try {
+            outputView.getVisitDateMessage();
+            String input = inputView.getVisitDate();
+            visitDate = new VisitDate(input);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            getVisitDateFromUser();
+        }
     }
 
     private void getOrderMenuFromUser() {

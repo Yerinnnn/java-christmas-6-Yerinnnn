@@ -10,8 +10,19 @@ public class VisitDate {
     private static final LocalDate CHRISTMAS = LocalDate.of(2032, 12, 25);
 
     public VisitDate(String input) {
+        validateIsNumeric(input);
+        validateRange(input);
         this.date = Integer.parseInt(input);
         this.visitDate = LocalDate.of(2023, 12, date);
+    }
+
+    private void validateIsNumeric(String input) {
+        if (!input.matches("\\d+")) throw new IllegalArgumentException("[ERROR] 숫자만 입력해 주세요.");
+    }
+
+    private void validateRange(String input) {
+        int date = Integer.parseInt(input);
+        if (date < 1 || date > 31) throw new IllegalArgumentException("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
     }
 
     public int getDate() {
