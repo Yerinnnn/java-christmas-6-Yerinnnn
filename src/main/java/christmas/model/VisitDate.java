@@ -17,7 +17,7 @@ public class VisitDate {
     }
 
     private void validateIsNumeric(String input) {
-        if (!input.matches("\\d+")) throw new IllegalArgumentException("[ERROR] 숫자만 입력해 주세요.");
+        if (!input.matches("\\d+")) throw new IllegalArgumentException("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
     }
 
     private void validateRange(String input) {
