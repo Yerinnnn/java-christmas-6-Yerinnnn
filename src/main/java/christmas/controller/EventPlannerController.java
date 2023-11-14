@@ -82,12 +82,14 @@ public class EventPlannerController {
     }
 
     private void printDiscountResult() {
-        if (totalOrderAmount > 10000) {
+        if (totalOrderAmount >= 10000) {
             christmasDdayDiscount();
             weekdayDiscount();
             weekendDiscount();
             specialDayDiscount();
             presentMenuDiscount();
+        } else if (totalOrderAmount < 10000) {
+            System.out.println("없음");
         }
     }
 

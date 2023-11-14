@@ -6,6 +6,7 @@ import java.util.List;
 public class OrderMenu {
 
     List<Menu> order = new ArrayList<>();
+    private int totalOrderCount;
 
     public OrderMenu(String input) {
         validateOrderFormat(input);
@@ -25,7 +26,7 @@ public class OrderMenu {
     }
 
     private void isSameMenu() {
-        List<String> orderMenus = null;
+        List<String> orderMenus = new ArrayList<>();
         for (Menu menu : order) {
             orderMenus.add(menu.getMenuName());
         }
@@ -33,7 +34,6 @@ public class OrderMenu {
     }
 
     private void validateOrderLimit() {
-        int totalOrderCount = 0;
         for (Menu menu : order) {
             totalOrderCount += menu.getAmount();
         }
@@ -41,8 +41,8 @@ public class OrderMenu {
     }
 
     private void isOrderOnlyBeverage() {
-        for (Menu menu : order) {
-            if (menu.getMenu().getType().matches("beverage")) throw new IllegalArgumentException("[ERROR] 음료만은 주문할 수 없습니다. 다시 입력해 주세요.");
+        if (order.stream().filter(menu -> menu.getMenu().getType().matches("beverage")).distinct().count() == totalOrderCount) {
+            throw new IllegalArgumentException("[ERROR] 음료만은 주문할 수 없습니다. 다시 입력해 주세요.");
         }
     }
 
