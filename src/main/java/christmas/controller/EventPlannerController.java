@@ -82,26 +82,47 @@ public class EventPlannerController {
     }
 
     private void printDiscountResult() {
+        if (totalOrderAmount > 10000) {
+            christmasDdayDiscount();
+            weekdayDiscount();
+            weekendDiscount();
+            specialDayDiscount();
+            presentMenuDiscount();
+        }
+    }
+
+    private void christmasDdayDiscount() {
         if (visitDate.isChristmasDday()) {
             int christmasDiscount = calculator.christmasDdayDiscount(visitDate);
             outputView.printChristmasDiscount(christmasDiscount);
             totalDiscountAmount += christmasDiscount;
-
         }
+    }
+
+    private void weekdayDiscount() {
         if (visitDate.isWeekday()) {
             int weekdayDiscount = calculator.weekdayDiscount(orderMenu);
             outputView.printWeekdayDiscount(weekdayDiscount);
             totalDiscountAmount += weekdayDiscount;
         }
+    }
+
+    private void weekendDiscount() {
         if (visitDate.isWeekend()) {
             int weekendDiscount = calculator.weekendDiscount(orderMenu);
             outputView.printWeekendDiscount(weekendDiscount);
             totalDiscountAmount += weekendDiscount;
         }
+    }
+
+    private void specialDayDiscount() {
         if (visitDate.isSpecialDay()) {
             outputView.printSpecialDiscount(SPECIAL_DISCOUNT);
             totalDiscountAmount += SPECIAL_DISCOUNT;
         }
+    }
+
+    private void presentMenuDiscount() {
         if (eventService.presentMenu(totalOrderAmount)) {
             outputView.printPresentlDiscount();
             totalDiscountAmount += PRESENT_DISCOUNT;
