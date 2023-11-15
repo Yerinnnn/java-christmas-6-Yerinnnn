@@ -57,10 +57,10 @@ public class OrderMenu {
 
     @Override
     public String toString() {
-        String orderMenu = "";
+        StringBuilder orderMenu = new StringBuilder("");
         for (Menu menu : order) {
-            orderMenu += menu.toString() + "\n";
+            orderMenu.append(menu.toString() + "\n");
         }
-        return orderMenu;
+        return orderMenu.toString();
     }
 }
