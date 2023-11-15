@@ -5,6 +5,11 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class VisitDate {
+
+    private static final String ERROR_EMPTY = "[ERROR] 날짜를 입력해 주세요.";
+    private static final String ERROR_NUMERIC = "[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.";
+    private static final String ERROR_RANGE = "[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.";
+
     LocalDate visitDate;
     int date;
     private static final LocalDate CHRISTMAS = LocalDate.of(2032, 12, 25);
@@ -18,16 +23,16 @@ public class VisitDate {
     }
 
     private void validateEmpty(String input) {
-        if (input.isEmpty() || input.matches(" ")) throw new IllegalArgumentException("[ERROR] 날짜를 입력해 주세요.");
+        if (input.isEmpty() || input.matches("")) throw new IllegalArgumentException(ERROR_EMPTY);
     }
 
     private void validateIsNumeric(String input) {
-        if (!input.matches("\\d+")) throw new IllegalArgumentException("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+        if (!input.matches("\\d+")) throw new IllegalArgumentException(ERROR_NUMERIC);
     }
 
     private void validateRange(String input) {
         int date = Integer.parseInt(input);
-        if (date < 1 || date > 31) throw new IllegalArgumentException("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+        if (date < 1 || date > 31) throw new IllegalArgumentException(ERROR_RANGE);
     }
 
     public int getDate() {
