@@ -9,6 +9,8 @@ public class OrderMenu {
 
     private static final String ORDER_MENU_FORMAT = "([가-힣A-Z]+-\\d+,)*[가-힣A-Z]+-\\d+";
 
+    private static final String MAIN = "main";
+    private static final String DESSERT = "dessert";
 
     List<Menu> order = new ArrayList<>();
     private int totalOrderCount;
@@ -26,6 +28,10 @@ public class OrderMenu {
         isOrderOnlyBeverage();
     }
 
+    /**
+     * validate method
+     */
+
     private void validateOrderFormat(String input) {
         if (!input.matches(ORDER_MENU_FORMAT)) throw new IllegalArgumentException(ORDER_FORMAT_ERROR.get());
     }
@@ -36,7 +42,7 @@ public class OrderMenu {
 
     private void validateOrderLimit() {
         for (Menu menu : order) {
-            totalOrderCount += menu.getAmount();
+            totalOrderCount += menu.amount;
         }
         if (totalOrderCount > 20) throw new IllegalArgumentException(ORDER_LIMIT_ERROR.get());
     }
@@ -47,8 +53,31 @@ public class OrderMenu {
         }
     }
 
-    public List<Menu> getOrder() {
-        return order;
+    /**
+     * calculate method
+     */
+    public int totalOrderAmount() {
+        return order.stream().map(menu -> menu.amount * menu.price).mapToInt(i -> i).sum();
+    }
+
+    public int countMainMenus() {
+        int mainCount = 0;
+        for (Menu menu : order) {
+            if (menu.type.equals(MAIN)) {
+                mainCount += menu.amount;
+            }
+        }
+        return mainCount;
+    }
+
+    public int countDessertMenus() {
+        int dessertCount = 0;
+        for (Menu menu : order) {
+            if (menu.type.equals(DESSERT)) {
+                dessertCount += menu.amount;
+            }
+        }
+        return dessertCount;
     }
 
     @Override

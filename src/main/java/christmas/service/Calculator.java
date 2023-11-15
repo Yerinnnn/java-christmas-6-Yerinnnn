@@ -18,36 +18,16 @@ public class Calculator {
     private static final String DESSERT = "dessert";
     private static final String MAIN = "main";
 
-    public int totalOrderAmount(OrderMenu orderMenu) {
-        int totalPrice = 0;
-        for (Menu menu : orderMenu.getOrder()) {
-            totalPrice += menu.menuPrice() * menu.getAmount();
-        }
-        return totalPrice;
-    }
-
     public int christmasDdayDiscount(VisitDate visitDate) {
         return CHRISTMAS_BASIC_DISCOUNT + (visitDate.getDate() - 1) * CHRISTMAS_ADDITIONAL_DISCOUNT;
     }
 
     public int weekdayDiscount(OrderMenu orderMenu) {
-        int dessertCount = 0;
-        for (Menu menu : orderMenu.getOrder()) {
-            if (menu.menuType().equals(DESSERT)) {
-                dessertCount += menu.getAmount();
-            }
-        }
-        return dessertCount * WEEKDAY_DISCOUNT;
+        return orderMenu.countDessertMenus() * WEEKDAY_DISCOUNT;
     }
 
     public int weekendDiscount(OrderMenu orderMenu) {
-        int mainCount = 0;
-        for (Menu menu : orderMenu.getOrder()) {
-            if (menu.menuType().equals(MAIN)) {
-                mainCount += menu.getAmount();
-            }
-        }
-        return mainCount * WEEKEND_DISCOUNT;
+        return orderMenu.countMainMenus() * WEEKEND_DISCOUNT;
     }
 
     public String badgeEvent(int totalDiscountAmount) {

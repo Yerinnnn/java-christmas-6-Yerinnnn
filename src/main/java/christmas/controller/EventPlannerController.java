@@ -86,7 +86,7 @@ public class EventPlannerController {
     }
 
     private void printTotalOrderAmount() {
-        totalOrderAmount = calculator.totalOrderAmount(orderMenu);
+        totalOrderAmount = orderMenu.totalOrderAmount();
         outputView.printTotalOrderAmount(totalOrderAmount);
     }
 

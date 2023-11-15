@@ -10,6 +10,8 @@ public class Menu {
 
     MenuItem menu;
     int amount;
+    int price;
+    String type;
 
     public Menu(String input) {
         String[] split = input.split("-");
@@ -18,6 +20,8 @@ public class Menu {
         validateMenuCount(split[1]);
         this.menu = MenuItem.of(split[0]);
         this.amount = Integer.parseInt(split[1]);
+        this.price = menu.price;
+        this.type = menu.type;
     }
 
     private void validateExist(String input) {
@@ -43,18 +47,6 @@ public class Menu {
 
     public boolean isBeverage() {
         return this.menu.getType().matches(BEVERAGE);
-    }
-
-    public int menuPrice() {
-        return menu.getPrice();
-    }
-
-    public String menuType() {
-        return menu.getType();
-    }
-
-    public int getAmount() {
-        return amount;
     }
 
     @Override
