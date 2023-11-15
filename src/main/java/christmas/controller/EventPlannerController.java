@@ -2,7 +2,6 @@ package christmas.controller;
 
 import christmas.model.OrderMenu;
 import christmas.model.VisitDate;
-import christmas.service.Calculator;
 import christmas.service.EventService;
 import christmas.view.InputView;
 import christmas.view.OutputView;
@@ -13,7 +12,6 @@ public class EventPlannerController {
     private final OutputView outputView;
     private final InputView inputView;
     private final EventService eventService;
-    private final Calculator calculator;
 
     private static final int MIN_ORDER_AMOUNT = 10000;
     private static final int SPECIAL_DISCOUNT = 1000;
@@ -24,10 +22,9 @@ public class EventPlannerController {
     private int totalOrderAmount;
     private int totalDiscountAmount;
 
-    public EventPlannerController(OutputView outputView, InputView inputView, Calculator calculator, EventService eventService) {
+    public EventPlannerController(OutputView outputView, InputView inputView, EventService eventService) {
         this.outputView = outputView;
         this.inputView = inputView;
-        this.calculator = calculator;
         this.eventService = eventService;
     }
 
@@ -108,7 +105,7 @@ public class EventPlannerController {
 
     private void christmasDdayDiscount() {
         if (visitDate.isChristmasDday()) {
-            int christmasDiscount = calculator.christmasDdayDiscount(visitDate);
+            int christmasDiscount = eventService.christmasDdayDiscount(visitDate);
             outputView.printChristmasDiscount(christmasDiscount);
             totalDiscountAmount += christmasDiscount;
         }
@@ -116,7 +113,7 @@ public class EventPlannerController {
 
     private void weekdayDiscount() {
         if (visitDate.isWeekday()) {
-            int weekdayDiscount = calculator.weekdayDiscount(orderMenu);
+            int weekdayDiscount = eventService.weekdayDiscount(orderMenu);
             outputView.printWeekdayDiscount(weekdayDiscount);
             totalDiscountAmount += weekdayDiscount;
         }
@@ -124,7 +121,7 @@ public class EventPlannerController {
 
     private void weekendDiscount() {
         if (visitDate.isWeekend()) {
-            int weekendDiscount = calculator.weekendDiscount(orderMenu);
+            int weekendDiscount = eventService.weekendDiscount(orderMenu);
             outputView.printWeekendDiscount(weekendDiscount);
             totalDiscountAmount += weekendDiscount;
         }
@@ -154,7 +151,7 @@ public class EventPlannerController {
     }
 
     private void printBadge() {
-        String badge = calculator.badgeEvent(totalDiscountAmount);
+        String badge = eventService.badgeEvent(totalDiscountAmount);
         outputView.printBadge(badge);
     }
 }
