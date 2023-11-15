@@ -1,10 +1,9 @@
 package christmas.model;
 
+import static christmas.model.ErrorMessage.*;
+
 public class Menu {
 
-    private static final String ERROR_EXIST = "[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.";
-    private static final String ERROR_NUMERIC = "[ERROR] 메뉴의 개수를 숫자로 입력해 주세요.";
-    private static final String ERROR_COUNT = "[ERROR] 메뉴의 개수를 1 이상 입력해 주세요.";
     private static final String ONLY_NUMERIC = "\\d+";
 
     MenuItem menu;
@@ -23,17 +22,17 @@ public class Menu {
         try {
             MenuItem.of(input).getMenuName().matches(input);
         } catch (NullPointerException e) {
-            throw new IllegalArgumentException(ERROR_EXIST);
+            throw new IllegalArgumentException(MENU_EXIST_ERROR.get());
         }
     }
 
     private void validateCountIsNumeric(String count) {
-        if (!count.matches(ONLY_NUMERIC)) throw new IllegalArgumentException(ERROR_NUMERIC);
+        if (!count.matches(ONLY_NUMERIC)) throw new IllegalArgumentException(MENU_COUNT_NUMERIC_ERROR.get());
     }
 
     private void validateMenuCount(String input) {
         int count = Integer.parseInt(input);
-        if (count < 1) throw new IllegalArgumentException(ERROR_COUNT);
+        if (count < 1) throw new IllegalArgumentException(MENU_COUNT_ERROR.get());
     }
 
     public MenuItem getMenu() {

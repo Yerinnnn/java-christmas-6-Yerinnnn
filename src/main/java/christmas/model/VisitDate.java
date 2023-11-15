@@ -4,17 +4,16 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import static christmas.model.ErrorMessage.*;
+
 public class VisitDate {
 
-    private static final String ERROR_EMPTY = "[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.";
-    private static final String ERROR_NUMERIC = "[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.";
-    private static final String ERROR_RANGE = "[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.";
     private static final String VISIT_DATE_FORMAT = "M월 d일";
     private static final LocalDate CHRISTMAS = LocalDate.of(2032, 12, 25);
     private static final String ONLY_NUMERIC = "\\d+";
+
     private static final int MIN_DATE = 1;
     private static final int MAX_DATE = 31;
-
 
     LocalDate visitDate;
     int date;
@@ -28,16 +27,16 @@ public class VisitDate {
     }
 
     private void validateEmpty(String input) {
-        if (input.isEmpty() || input.matches(" ")) throw new IllegalArgumentException(ERROR_EMPTY);
+        if (input.isEmpty() || input.matches(" ")) throw new IllegalArgumentException(VISIT_DATE_ERROR.get());
     }
 
     private void validateIsNumeric(String input) {
-        if (!input.matches(ONLY_NUMERIC)) throw new IllegalArgumentException(ERROR_NUMERIC);
+        if (!input.matches(ONLY_NUMERIC)) throw new IllegalArgumentException(VISIT_DATE_ERROR.get());
     }
 
     private void validateRange(String input) {
         int date = Integer.parseInt(input);
-        if (date < MIN_DATE || date > MAX_DATE) throw new IllegalArgumentException(ERROR_RANGE);
+        if (date < MIN_DATE || date > MAX_DATE) throw new IllegalArgumentException(VISIT_DATE_ERROR.get());
     }
 
     public int getDate() {
