@@ -3,7 +3,7 @@ package christmas.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import static christmas.model.ErrorMessage.*;
+import static christmas.message.ErrorMessage.*;
 
 public class OrderMenu {
 

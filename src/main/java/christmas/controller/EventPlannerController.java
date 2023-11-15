@@ -13,6 +13,7 @@ public class EventPlannerController {
     private final OutputView outputView;
     private final InputView inputView;
     private final EventService eventService;
+    private final Calculator calculator;
 
     private static final int MIN_ORDER_AMOUNT = 10000;
     private static final int SPECIAL_DISCOUNT = 1000;
@@ -20,7 +21,6 @@ public class EventPlannerController {
 
     private VisitDate visitDate;
     private OrderMenu orderMenu;
-    private final Calculator calculator;
     private int totalOrderAmount;
     private int totalDiscountAmount;
 

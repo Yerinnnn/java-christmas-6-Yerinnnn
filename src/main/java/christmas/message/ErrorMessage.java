@@ -1,4 +1,4 @@
-package christmas.model;
+package christmas.message;
 
 public enum ErrorMessage {
 

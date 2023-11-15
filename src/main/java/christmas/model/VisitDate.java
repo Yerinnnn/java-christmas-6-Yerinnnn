@@ -4,7 +4,7 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import static christmas.model.ErrorMessage.*;
+import static christmas.message.ErrorMessage.*;
 
 public class VisitDate {
 

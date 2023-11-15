@@ -51,7 +51,7 @@ public class OutputView {
     }
 
     public void printChristmasDiscount(int christmasDiscount) {
-        System.out.println(DISCOUNT_CHRISTMAS_DDAY.get() + formatResult(christmasDiscount));
+        System.out.println(DISCOUNT_CHRISTMAS_D_DAY.get() + formatResult(christmasDiscount));
     }
 
     public void printWeekdayDiscount(int weekdayDiscount) {
@@ -63,7 +63,7 @@ public class OutputView {
     }
 
     public void printSpecialDiscount(int specialDiscount) {
-        System.out.println(DISCOUNT_SPECIALDAY.get() + formatResult(specialDiscount));
+        System.out.println(DISCOUNT_SPECIAL_DAY.get() + formatResult(specialDiscount));
     }
 
     public void printPresentlDiscount() {

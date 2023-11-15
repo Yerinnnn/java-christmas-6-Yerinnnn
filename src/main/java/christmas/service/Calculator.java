@@ -15,6 +15,9 @@ public class Calculator {
     private static final int BADGE_TREE_DISCOUNT_AMOUNT = 10000;
     private static final int BADGE_STAR_DISCOUNT_AMOUNT = 5000;
 
+    private static final String DESSERT = "dessert";
+    private static final String MAIN = "main";
+
     public int totalOrderAmount(OrderMenu orderMenu) {
         int totalPrice = 0;
         for (Menu menu : orderMenu.getOrder()) {
@@ -24,13 +27,13 @@ public class Calculator {
     }
 
     public int christmasDdayDiscount(VisitDate visitDate) {
-        return CHRISTMAS_BASIC_DISCOUNT + (visitDate.getDate()-1) * CHRISTMAS_ADDITIONAL_DISCOUNT;
+        return CHRISTMAS_BASIC_DISCOUNT + (visitDate.getDate() - 1) * CHRISTMAS_ADDITIONAL_DISCOUNT;
     }
 
     public int weekdayDiscount(OrderMenu orderMenu) {
         int dessertCount = 0;
         for (Menu menu : orderMenu.getOrder()) {
-            if (MenuItem.of(menu.getMenuName()).getType().equals("dessert")) {
+            if (MenuItem.of(menu.getMenuName()).getType().equals(DESSERT)) {
                 dessertCount += menu.getAmount();
             }
         }
@@ -40,7 +43,7 @@ public class Calculator {
     public int weekendDiscount(OrderMenu orderMenu) {
         int mainCount = 0;
         for (Menu menu : orderMenu.getOrder()) {
-            if(MenuItem.of(menu.getMenuName()).getType().equals("main")) {
+            if (MenuItem.of(menu.getMenuName()).getType().equals(MAIN)) {
                 mainCount += menu.getAmount();
             }
         }

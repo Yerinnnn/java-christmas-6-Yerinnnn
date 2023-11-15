@@ -1,6 +1,6 @@
 package christmas.model;
 
-import static christmas.model.ErrorMessage.*;
+import static christmas.message.ErrorMessage.*;
 
 public class Menu {
 
@@ -20,10 +20,14 @@ public class Menu {
 
     private void validateExist(String input) {
         try {
-            MenuItem.of(input).getMenuName().matches(input);
+            isExist(input);
         } catch (NullPointerException e) {
             throw new IllegalArgumentException(MENU_EXIST_ERROR.get());
         }
+    }
+
+    private void isExist(String input) {
+        MenuItem.of(input).getMenuName().matches(input);
     }
 
     private void validateCountIsNumeric(String count) {
