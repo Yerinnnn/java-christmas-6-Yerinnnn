@@ -1,7 +1,5 @@
 package christmas.service;
 
-import christmas.model.Menu;
-import christmas.model.MenuItem;
 import christmas.model.OrderMenu;
 import christmas.model.VisitDate;
 
@@ -15,8 +13,6 @@ public class Calculator {
     private static final int BADGE_TREE_DISCOUNT_AMOUNT = 10000;
     private static final int BADGE_STAR_DISCOUNT_AMOUNT = 5000;
 
-    private static final String DESSERT = "dessert";
-    private static final String MAIN = "main";
 
     public int christmasDdayDiscount(VisitDate visitDate) {
         return CHRISTMAS_BASIC_DISCOUNT + (visitDate.getDate() - 1) * CHRISTMAS_ADDITIONAL_DISCOUNT;
