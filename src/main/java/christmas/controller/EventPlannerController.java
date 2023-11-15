@@ -7,10 +7,14 @@ import christmas.service.EventService;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 
+import static christmas.message.OutputMessage.PRESENT_NOTHING;
+
 public class EventPlannerController {
     private final OutputView outputView;
     private final InputView inputView;
     private final EventService eventService;
+
+    private static final int MIN_ORDER_AMOUNT = 10000;
     private static final int SPECIAL_DISCOUNT = 1000;
     private static final int PRESENT_DISCOUNT = 25000;
 
@@ -91,14 +95,14 @@ public class EventPlannerController {
     }
 
     private void printDiscountResult() {
-        if (totalOrderAmount >= 10000) {
+        if (totalOrderAmount >= MIN_ORDER_AMOUNT) {
             christmasDdayDiscount();
             weekdayDiscount();
             weekendDiscount();
             specialDayDiscount();
             presentMenuDiscount();
-        } else if (totalOrderAmount < 10000) {
-            System.out.println("없음");
+        } else if (totalOrderAmount < MIN_ORDER_AMOUNT) {
+            System.out.println(PRESENT_NOTHING.get());
         }
     }
 

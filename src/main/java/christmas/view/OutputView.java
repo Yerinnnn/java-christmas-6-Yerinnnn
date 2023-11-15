@@ -6,6 +6,8 @@ import static christmas.message.OutputMessage.*;
 
 public class OutputView {
 
+    private static final String WON_FORMAT = "%,d";
+
     public void printStartMessage() {
         System.out.println(START_MESSAGE.get());
     }
@@ -30,7 +32,7 @@ public class OutputView {
 
     public void printTotalOrderAmount(int totalOrderAmount) {
         System.out.println(ORDER_AMOUNT_MESSAGE.get());
-        System.out.println(String.format("%,d", totalOrderAmount) + WON);
+        System.out.println(formatResult(totalOrderAmount) + WON.get());
         System.out.println();
     }
 
@@ -49,19 +51,19 @@ public class OutputView {
     }
 
     public void printChristmasDiscount(int christmasDiscount) {
-        System.out.println(DISCOUNT_CHRISTMAS_DDAY.get() + String.format("%,d", christmasDiscount));
+        System.out.println(DISCOUNT_CHRISTMAS_DDAY.get() + formatResult(christmasDiscount));
     }
 
     public void printWeekdayDiscount(int weekdayDiscount) {
-        System.out.println(DISCOUNT_WEEKDAY.get() + String.format("%,d", weekdayDiscount));
+        System.out.println(DISCOUNT_WEEKDAY.get() + formatResult(weekdayDiscount));
     }
 
     public void printWeekendDiscount(int weekendDiscount) {
-        System.out.println(DISCOUNT_WEEKEND.get() + String.format("%,d", weekendDiscount));
+        System.out.println(DISCOUNT_WEEKEND.get() + formatResult(weekendDiscount));
     }
 
     public void printSpecialDiscount(int specialDiscount) {
-        System.out.println(DISCOUNT_SPECIALDAY.get() + String.format("%,d", specialDiscount));
+        System.out.println(DISCOUNT_SPECIALDAY.get() + formatResult(specialDiscount));
     }
 
     public void printPresentlDiscount() {
@@ -71,13 +73,13 @@ public class OutputView {
     public void printTotalDiscountAmount(int totalDiscountAmount) {
         System.out.println();
         System.out.println(DISCOUNT_AMOUNT_MESSAGE.get());
-        System.out.println("-" + String.format("%,d", totalDiscountAmount));
+        System.out.println(formatResult(totalDiscountAmount) + WON.get());
         System.out.println();
     }
 
     public void printTotalPaymentAmount(int totalPaymentAmount) {
         System.out.println(PAYMENT_AMOUNT_MESSAGE.get());
-        System.out.println(String.format("%,d", totalPaymentAmount) + WON.get());
+        System.out.println(formatResult(totalPaymentAmount) + WON.get());
         System.out.println();
     }
 
@@ -86,4 +88,7 @@ public class OutputView {
         System.out.println(badge);
     }
 
+    private String formatResult(int input) {
+        return String.format(WON_FORMAT, input);
+    }
 }

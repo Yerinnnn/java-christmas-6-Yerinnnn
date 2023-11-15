@@ -5,6 +5,7 @@ public class Menu {
     private static final String ERROR_EXIST = "[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.";
     private static final String ERROR_NUMERIC = "[ERROR] 메뉴의 개수를 숫자로 입력해 주세요.";
     private static final String ERROR_COUNT = "[ERROR] 메뉴의 개수를 1 이상 입력해 주세요.";
+    private static final String ONLY_NUMERIC = "\\d+";
 
     MenuItem menu;
     int amount;
@@ -27,7 +28,7 @@ public class Menu {
     }
 
     private void validateCountIsNumeric(String count) {
-        if (!count.matches("\\d+")) throw new IllegalArgumentException(ERROR_NUMERIC);
+        if (!count.matches(ONLY_NUMERIC)) throw new IllegalArgumentException(ERROR_NUMERIC);
     }
 
     private void validateMenuCount(String input) {
