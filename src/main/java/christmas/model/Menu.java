@@ -24,6 +24,15 @@ public class Menu {
         this.type = menu.type;
     }
 
+    @Override
+    public String toString() {
+        return menu.getMenuName() + " " + amount + "개";
+    }
+
+    /**
+     * validate method
+     */
+
     private void validateExist(String input) {
         try {
             isExist(input);
@@ -47,10 +56,5 @@ public class Menu {
 
     public boolean isBeverage() {
         return this.menu.getType().matches(BEVERAGE);
-    }
-
-    @Override
-    public String toString() {
-        return menu.getMenuName() + " " + amount + "개";
     }
 }

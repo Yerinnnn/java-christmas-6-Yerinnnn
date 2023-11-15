@@ -28,6 +28,15 @@ public class OrderMenu {
         isOrderOnlyBeverage();
     }
 
+    @Override
+    public String toString() {
+        StringBuilder orderMenu = new StringBuilder("");
+        for (Menu menu : order) {
+            orderMenu.append(menu.toString() + "\n");
+        }
+        return orderMenu.toString();
+    }
+
     /**
      * validate method
      */
@@ -56,6 +65,7 @@ public class OrderMenu {
     /**
      * calculate method
      */
+
     public int totalOrderAmount() {
         return order.stream().map(menu -> menu.amount * menu.price).mapToInt(i -> i).sum();
     }
@@ -78,14 +88,5 @@ public class OrderMenu {
             }
         }
         return dessertCount;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder orderMenu = new StringBuilder("");
-        for (Menu menu : order) {
-            orderMenu.append(menu.toString() + "\n");
-        }
-        return orderMenu.toString();
     }
 }
