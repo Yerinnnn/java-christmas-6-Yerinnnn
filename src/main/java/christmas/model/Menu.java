@@ -8,7 +8,7 @@ public class Menu {
 
     private static final String BEVERAGE = "beverage";
 
-    MenuItem menuName;
+    MenuItem menu;
     int amount;
 
     public Menu(String input) {
@@ -16,7 +16,7 @@ public class Menu {
         validateExist(split[0]);
         validateCountIsNumeric(split[1]);
         validateMenuCount(split[1]);
-        this.menuName = MenuItem.of(split[0]);
+        this.menu = MenuItem.of(split[0]);
         this.amount = Integer.parseInt(split[1]);
     }
 
@@ -42,11 +42,15 @@ public class Menu {
     }
 
     public boolean isBeverage() {
-        return this.menuName.getType().matches(BEVERAGE);
+        return this.menu.getType().matches(BEVERAGE);
     }
 
-    public String getMenuName() {
-        return menuName.getMenuName();
+    public int menuPrice() {
+        return menu.getPrice();
+    }
+
+    public String menuType() {
+        return menu.getType();
     }
 
     public int getAmount() {
@@ -55,6 +59,6 @@ public class Menu {
 
     @Override
     public String toString() {
-        return menuName.getMenuName() + " " + amount + "개";
+        return menu.getMenuName() + " " + amount + "개";
     }
 }

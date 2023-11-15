@@ -31,7 +31,7 @@ public class OrderMenu {
     }
 
     private void isSameMenu() {
-        if (order.size() != order.stream().map(eachMenu -> eachMenu.menuName.toString()).distinct().count()) throw new IllegalArgumentException(MENU_DUPLICATION_ERROR.get());
+        if (order.size() != order.stream().map(eachMenu -> eachMenu.menu.toString()).distinct().count()) throw new IllegalArgumentException(MENU_DUPLICATION_ERROR.get());
     }
 
     private void validateOrderLimit() {
