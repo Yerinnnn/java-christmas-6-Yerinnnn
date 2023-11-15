@@ -6,6 +6,8 @@ public class Menu {
 
     private static final String ONLY_NUMERIC = "\\d+";
 
+    private static final String BEVERAGE = "beverage";
+
     MenuItem menu;
     int amount;
 
@@ -39,8 +41,8 @@ public class Menu {
         if (count < 1) throw new IllegalArgumentException(MENU_COUNT_ERROR.get());
     }
 
-    public MenuItem getMenu() {
-        return menu;
+    public boolean isBeverage() {
+        return this.menu.getType().matches(BEVERAGE);
     }
 
     public String getMenuName() {

@@ -8,7 +8,7 @@ import static christmas.message.ErrorMessage.*;
 public class OrderMenu {
 
     private static final String ORDER_MENU_FORMAT = "([가-힣A-Z]+-\\d+,)*[가-힣A-Z]+-\\d+";
-    private static final String BEVERAGE = "beverage";
+
 
     List<Menu> order = new ArrayList<>();
     private int totalOrderCount;
@@ -46,7 +46,7 @@ public class OrderMenu {
     }
 
     private void isOrderOnlyBeverage() {
-        if (order.stream().filter(menu -> menu.getMenu().getType().matches(BEVERAGE)).distinct().count() == totalOrderCount) {
+        if (order.stream().filter(menu -> menu.isBeverage()).count() == totalOrderCount) {
             throw new IllegalArgumentException(ORDER_ONLY_BEVERAGE_ERROR.get());
         }
     }
