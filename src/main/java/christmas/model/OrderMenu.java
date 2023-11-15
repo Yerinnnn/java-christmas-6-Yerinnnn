@@ -12,6 +12,7 @@ public class OrderMenu {
     private static final String MAIN = "main";
     private static final String DESSERT = "dessert";
     private static final String BEVERAGE = "beverage";
+    private static final int MAX_ORDER_COUNT = 20;
 
     List<Menu> order = new ArrayList<>();
     private int totalOrderCount;
@@ -54,7 +55,7 @@ public class OrderMenu {
         for (Menu menu : order) {
             totalOrderCount += menu.amount;
         }
-        if (totalOrderCount > 20) throw new IllegalArgumentException(ORDER_LIMIT_ERROR.get());
+        if (totalOrderCount > MAX_ORDER_COUNT) throw new IllegalArgumentException(ORDER_LIMIT_ERROR.get());
     }
 
     private void isOrderOnlyBeverage() {
