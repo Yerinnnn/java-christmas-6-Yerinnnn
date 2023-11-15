@@ -11,6 +11,7 @@ public class OrderMenu {
 
     private static final String MAIN = "main";
     private static final String DESSERT = "dessert";
+    private static final String BEVERAGE = "beverage";
 
     List<Menu> order = new ArrayList<>();
     private int totalOrderCount;
@@ -57,7 +58,7 @@ public class OrderMenu {
     }
 
     private void isOrderOnlyBeverage() {
-        if (order.stream().filter(menu -> menu.isBeverage()).count() == totalOrderCount) {
+        if (countBeverageMenus() == totalOrderCount) {
             throw new IllegalArgumentException(ORDER_ONLY_BEVERAGE_ERROR.get());
         }
     }
@@ -88,5 +89,15 @@ public class OrderMenu {
             }
         }
         return dessertCount;
+    }
+
+    private int countBeverageMenus() {
+        int beverageCount = 0;
+        for (Menu menu : order) {
+            if (menu.type.equals(BEVERAGE)) {
+                beverageCount += menu.amount;
+            }
+        }
+        return beverageCount;
     }
 }
