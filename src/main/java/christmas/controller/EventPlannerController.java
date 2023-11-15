@@ -73,7 +73,6 @@ public class EventPlannerController {
                 isValidInput = true;
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
-                getOrderMenuFromUser();
             }
         }
     }
