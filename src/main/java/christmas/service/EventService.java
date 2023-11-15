@@ -5,6 +5,7 @@ import christmas.model.VisitDate;
 
 public class EventService {
 
+    private static final int MIN_ORDER_AMOUNT = 120000;
     private static final int CHRISTMAS_BASIC_DISCOUNT = 1000;
     private static final int CHRISTMAS_ADDITIONAL_DISCOUNT = 100;
     private static final int WEEKDAY_DISCOUNT = 2023;
@@ -15,7 +16,7 @@ public class EventService {
 
 
     public boolean presentMenu(int totalOrderAmount) {
-        return totalOrderAmount >= 120000;
+        return totalOrderAmount >= MIN_ORDER_AMOUNT;
     }
 
     public int christmasDdayDiscount(VisitDate visitDate) {
