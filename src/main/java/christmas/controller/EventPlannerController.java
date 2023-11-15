@@ -47,24 +47,33 @@ public class EventPlannerController {
     }
 
     private void getVisitDateFromUser() {
-        try {
-            outputView.getVisitDateMessage();
-            String input = inputView.getVisitDate();
-            visitDate = new VisitDate(input);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            getVisitDateFromUser();
+        boolean isValidInput = false;
+
+        while (!isValidInput) {
+            try {
+                outputView.getVisitDateMessage();
+                String input = inputView.getVisitDate();
+                visitDate = new VisitDate(input);
+                isValidInput = true;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 
     private void getOrderMenuFromUser() {
-        try {
-            outputView.getOrderMenuMessage();
-            String input = inputView.getOrderMenu();
-            orderMenu = new OrderMenu(input);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            getOrderMenuFromUser();
+        boolean isValidInput = false;
+
+        while (!isValidInput) {
+            try {
+                outputView.getOrderMenuMessage();
+                String input = inputView.getOrderMenu();
+                orderMenu = new OrderMenu(input);
+                isValidInput = true;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+                getOrderMenuFromUser();
+            }
         }
     }
 
