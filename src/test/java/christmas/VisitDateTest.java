@@ -17,7 +17,6 @@ public class VisitDateTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-
     @DisplayName("문자 또는 특수문자, 띄어쓰기가 입력된 경우 예외 발생")
     @ParameterizedTest
     @ValueSource(strings = {"", " ", "4a0", "ㅇ1"})
