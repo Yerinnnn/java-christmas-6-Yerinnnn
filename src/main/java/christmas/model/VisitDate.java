@@ -10,10 +10,15 @@ public class VisitDate {
     private static final LocalDate CHRISTMAS = LocalDate.of(2032, 12, 25);
 
     public VisitDate(String input) {
+        validateEmpty(input);
         validateIsNumeric(input);
         validateRange(input);
         this.date = Integer.parseInt(input);
         this.visitDate = LocalDate.of(2023, 12, date);
+    }
+
+    private void validateEmpty(String input) {
+        if (input.isEmpty() || input.matches(" ")) throw new IllegalArgumentException("[ERROR] 날짜를 입력해 주세요.");
     }
 
     private void validateIsNumeric(String input) {
@@ -27,10 +32,6 @@ public class VisitDate {
 
     public int getDate() {
         return date;
-    }
-
-    public LocalDate getVisitDate() {
-        return visitDate;
     }
 
     @Override
