@@ -31,11 +31,7 @@ public class OrderMenu {
     }
 
     private void isSameMenu() {
-        List<String> orderMenus = new ArrayList<>();
-        for (Menu menu : order) {
-            orderMenus.add(menu.getMenuName());
-        }
-        if (orderMenus.size() != orderMenus.stream().distinct().count()) throw new IllegalArgumentException(MENU_DUPLICATION_ERROR.get());
+        if (order.size() != order.stream().map(eachMenu -> eachMenu.menuName.toString()).distinct().count()) throw new IllegalArgumentException(MENU_DUPLICATION_ERROR.get());
     }
 
     private void validateOrderLimit() {
